@@ -7,6 +7,14 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  devices: {
+    type: Array,
+    required: true,
+    default: [],
+  },
+  checked: {
+    type: Boolean,
+  },
 })
 
 const emits = defineEmits(["remove-auo-item"])
@@ -20,8 +28,16 @@ const remove = () => {
     <li class="flex items-center justify-between py-6 border-b">
       <div class="flex items-center gap-3">
         <input type="checkbox" id="todo_id_1" class="checkbox" />
-        <label for="todo_id_1" class="text-xl cursor-pointer"
-          >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores nemo explicabo
+        <!-- <input type="checkbox" id="todo_id_2" class="checkbox" 
+          :checked="checked"
+          @change="$emit('update:checked', !checked)"
+        /> -->
+        <label for="todo_id_1" class="text-xl cursor-pointer" 
+            
+        ><!-- :class="{
+              'line-through': !checked,
+              }" -->
+          {{ device.title }}
         </label>
       </div>
       <div>
@@ -37,3 +53,9 @@ const remove = () => {
       </div>
     </li>
 </template>
+
+<style scoped>
+.line-through{
+  text-decoration:line-through;
+}
+</style>
