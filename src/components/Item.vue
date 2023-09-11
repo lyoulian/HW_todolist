@@ -15,6 +15,7 @@ const props = defineProps({
   checked: {
     type: Boolean,
   },
+  completed: Boolean, 
 })
 
 const emits = defineEmits(["remove-auo-item"])
@@ -27,13 +28,13 @@ const remove = () => {
 <template>
     <li class="flex items-center justify-between py-6 border-b">
       <div class="flex items-center gap-3">
-        <input type="checkbox" id="todo_id_1" class="checkbox" />
+        <input type="checkbox" id="todo_id_1" class="checkbox" v-model="completed"/>
         <!-- <input type="checkbox" id="todo_id_2" class="checkbox" 
           :checked="checked"
           @change="$emit('update:checked', !checked)"
         /> -->
         <label for="todo_id_1" class="text-xl cursor-pointer" 
-            
+          :class="{ 'line-through': completed }"
         ><!-- :class="{
               'line-through': !checked,
               }" -->
