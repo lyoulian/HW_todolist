@@ -21,7 +21,7 @@ const remove = () => {
 </script>
 
 <template>
-    <li class="flex items-center justify-between py-6 border-b">
+    <!-- <li class="flex items-center justify-between py-6 border-b">
       <div class="flex items-center gap-3">
         <input type="checkbox" id="todo_id_1" class="checkbox" v-model="completed"/>
         <label for="todo_id_1" class="text-xl cursor-pointer" 
@@ -29,7 +29,7 @@ const remove = () => {
         >
           {{ toDo.title }}
         </label>
-      </div>
+      </div> -->
       <div>
         <button class="p-2 hover:text-white hover:bg-neutral" @click="remove">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -41,10 +41,10 @@ const remove = () => {
           </svg>
         </button>
       </div>
-    </li>
+    <!-- </li> -->
 </template>
 
-<style scoped>
+<style>
 .line-through{
   text-decoration:line-through;
   color: red;

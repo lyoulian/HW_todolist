@@ -6,7 +6,7 @@ import { ref, reactive, onBeforeMount, onMounted } from "vue"
 const toDo = ref("")
 const toDos = reactive([])
 const StorageKey = "AUO-ToDo-List"
-
+const completed = ref(props.completed)
 const save = (key, data) => {
   localStorage.setItem(key, JSON.stringify(data))
 }
@@ -61,11 +61,21 @@ onBeforeMount(() => {
 
       <section class="px-10 py-6 mt-4 bg-white">
         <ul>
+          <li class="flex items-center justify-between py-6 border-b">
+          <div class="flex items-center gap-3">
+            <input type="checkbox" id="todo_id_1" class="checkbox" v-model="completed"/>
+            <label for="todo_id_1" class="text-xl cursor-pointer" 
+              :class="{ 'line-through': completed }"
+            >
+              {{ toDo.title }}
+            </label>
+          </div>
           <TodoItem
             @remove-item="removeItem"
             v-for="d in toDos"
             :toDo="d"
           />
+          </li>
         </ul>        
       </section>
     </main>
