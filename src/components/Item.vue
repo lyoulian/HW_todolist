@@ -4,6 +4,7 @@ const props = defineProps({
   toDo: {
     type: Object,
     required: true,
+    completed: false
   },
   toDos: {
     type: Array,
@@ -27,9 +28,9 @@ const remove = () => {
 <template>
     <li class="flex items-center justify-between py-6 border-b">
       <div class="flex items-center gap-3">
-        <input type="checkbox" id="todo_id_1" class="checkbox" v-model="completed"/>
+        <input type="checkbox" id="todo_id_1" class="checkbox" v-model="toDo.completed"/>
         <label for="todo_id_1" class="text-xl cursor-pointer" 
-          :class="{ 'line-through': completed }"
+          :class="{ 'line-through': toDo.completed }"
         >
           {{ toDo.title }}
         </label>
