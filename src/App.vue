@@ -6,7 +6,7 @@ import { ref, reactive, onBeforeMount, onMounted } from "vue"
 const toDo = ref("")
 const toDos = reactive([])
 const StorageKey = "AUO-ToDo-List"
-const completed = ref(props.completed)
+const completed = ref(completed)
 const save = (key, data) => {
   localStorage.setItem(key, JSON.stringify(data))
 }
