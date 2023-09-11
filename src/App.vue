@@ -1,42 +1,42 @@
 <script setup>
-import DeviceItem from "@/components/Item.vue"
+import TodoItem from "@/components/Item.vue"
 import { v4 as uuidv4 } from "uuid"
 import { ref, reactive, onBeforeMount, onMounted } from "vue"
 
-const device = ref("")
-const devices = reactive([])
-const StorageKey = "AUO-Device-List"
+const toDo = ref("")
+const toDos = reactive([])
+const StorageKey = "AUO-ToDo-List"
 
 const save = (key, data) => {
   localStorage.setItem(key, JSON.stringify(data))
 }
 
-const addDevice = () => {
-  if (device.value !== "") {
+const addtoDos = () => {
+  if (toDo.value !== "") {
     const item = {
       id: uuidv4(),
-      title: device.value,
+      title: toDo.value,
     }
-    devices.unshift(item)
+    toDos.unshift(item)
 
-    save(StorageKey, devices)
+    save(StorageKey, toDos)
     
-    device.value = ""
+    toDo.value = ""
   }
 }
 
 const removeItem = (id) => {
-  const index = devices.findIndex((device) => {
-    return device.id === id
+  const index = toDos.findIndex((toDo) => {
+    return toDo.id === id
   })
 
-  devices.splice(index, 1)
-  save(StorageKey, devices)
+  toDos.splice(index, 1)
+  save(StorageKey, toDos)
 }
 
 onBeforeMount(() => {
-  const saveDevices = JSON.parse(localStorage.getItem(StorageKey))
-  devices.push(...saveDevices)
+  const saveToDos = JSON.parse(localStorage.getItem(StorageKey))
+  toDos.push(...saveToDos)
 })
 
 </script>
@@ -53,18 +53,18 @@ onBeforeMount(() => {
             type="text" 
             placeholder="做點重要的事吧..." 
             class="w-full text-2xl focus:outline-none input-lg input input-bordered" 
-            v-model="device"
+            v-model="toDo"
           />
-          <button @click.prevent="addDevice" class="text-xl btn-lg btn btn-neutral">新增</button>
+          <button @click.prevent="addtoDos" class="text-xl btn-lg btn btn-neutral">新增</button>
         </section>
       </form>
 
       <section class="px-10 py-6 mt-4 bg-white">
         <ul>
-          <DeviceItem
-            @remove-auo-item="removeItem"
-            v-for="d in devices"
-            :device="d"
+          <TodoItem
+            @remove-item="removeItem"
+            v-for="d in toDos"
+            :toDo="d"
           />
         </ul>        
       </section>

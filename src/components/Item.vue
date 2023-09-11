@@ -3,25 +3,22 @@ import { computed } from "vue"
 import { RouterLink } from "vue-router"
 
 const props = defineProps({
-  device: {
+  toDo: {
     type: Object,
     required: true,
   },
-  devices: {
+  toDos: {
     type: Array,
     required: true,
     default: [],
   },
-  checked: {
-    type: Boolean,
-  },
   completed: Boolean, 
 })
 
-const emits = defineEmits(["remove-auo-item"])
+const emits = defineEmits(["remove-item"])
 
 const remove = () => {
-  emits("remove-auo-item", props.device.id)
+  emits("remove-item", props.toDo.id)
 }
 </script>
 
@@ -29,16 +26,10 @@ const remove = () => {
     <li class="flex items-center justify-between py-6 border-b">
       <div class="flex items-center gap-3">
         <input type="checkbox" id="todo_id_1" class="checkbox" v-model="completed"/>
-        <!-- <input type="checkbox" id="todo_id_2" class="checkbox" 
-          :checked="checked"
-          @change="$emit('update:checked', !checked)"
-        /> -->
         <label for="todo_id_1" class="text-xl cursor-pointer" 
           :class="{ 'line-through': completed }"
-        ><!-- :class="{
-              'line-through': !checked,
-              }" -->
-          {{ device.title }}
+        >
+          {{ toDo.title }}
         </label>
       </div>
       <div>
@@ -58,5 +49,6 @@ const remove = () => {
 <style scoped>
 .line-through{
   text-decoration:line-through;
+  color: darkred;
 }
 </style>
