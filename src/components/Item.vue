@@ -1,6 +1,4 @@
 <script setup>
-import { computed } from "vue"
-import { RouterLink } from "vue-router"
 
 const props = defineProps({
   toDo: {
@@ -49,6 +47,6 @@ const remove = () => {
 <style scoped>
 .line-through{
   text-decoration:line-through;
-  color: darkred;
+  color: red;
 }
 </style>

@@ -45,7 +45,7 @@ onBeforeMount(() => {
     <main class="container mx-auto">
       <header class="m-2">
         <h1 class="text-6xl font-thin select-none">TODO!</h1>
-        <div class="font-semibold select-none text-neutral-600">simple and studid todo app</div>
+        <div class="font-semibold select-none text-neutral-600">simple and studid todo app test</div>
       </header>
       <form class="px-10 py-12 bg-white shadow-sm">
         <section class="flex">
