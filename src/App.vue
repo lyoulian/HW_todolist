@@ -4,9 +4,9 @@ import { v4 as uuidv4 } from "uuid"
 import { ref, reactive, onBeforeMount, onMounted } from "vue"
 
 const toDo = ref("")
-const toDos = reactive([{id:"1",title:"...",completed: false}])
+const toDos = reactive([])
 const StorageKey = "AUO-ToDo-List"
-//const completed = ref(props.completed)
+
 const save = (key, data) => {
   localStorage.setItem(key, JSON.stringify(data))
 }
